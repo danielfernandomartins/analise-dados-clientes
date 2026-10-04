@@ -1,42 +1,59 @@
 # 📊 Análise de Cancelamento de Clientes com Python
 
-Projeto prático desenvolvido durante a **Jornada Python** (Aula 02), com o objetivo de analisar uma base de dados de clientes de uma empresa fictícia para identificar padrões, entender os principais motivos de cancelamento (Churn) e propor reduções estratégicas nessa taxa.
+Projeto de análise exploratória de dados voltado a **comportamento de clientes, churn e tomada de decisão**.
 
----
+## Objetivo
 
-## 🚀 Tecnologias e Bibliotecas Utilizadas
-O projeto foi inteiramente construído em Python utilizando o ambiente do Jupyter Notebook / Google Colab e as seguintes bibliotecas:
-* **Pandas**: Para importação, manipulação, limpeza e tratamento dos dados.
-* **Plotly Express**: Para a criação de gráficos interativos e análise visual avançada.
-* **Nbformat**: Suporte auxiliar para renderização de gráficos estruturados.
+Investigar padrões associados ao cancelamento de clientes em uma base fictícia e transformar dados brutos em hipóteses úteis para áreas de **relacionamento, retenção, atendimento e negócios**.
 
----
+## O que foi analisado
 
-## 📈 Etapas do Projeto
+- Qualidade e consistência da base
+- Taxa de cancelamento
+- Tipo de contrato
+- Volume de contatos com atendimento
+- Atraso em pagamentos
+- Relações entre comportamento e churn
 
-1. **Importação e Limpeza Inicial:** Leitura da base de dados `.csv` e remoção de colunas irrelevantes (como o ID do cliente).
-2. **Tratamento de Dados:** Identificação e remoção de linhas vazias (`dropna`) para padronização da base.
-3. **Análise Exploratória da Taxa de Cancelamento:** Constatação inicial de que mais de **56%** dos clientes estavam cancelando o serviço.
-4. **Filtros e Descobertas Estratégicas:**
-   * **Contratos Mensais:** Identificado que praticamente 100% dos clientes com contratos mensais cancelavam o serviço.
-   * **Chamadas ao Call Center:** Constatado que clientes que ligavam mais de 5 vezes para o suporte cancelavam as assinaturas.
-   * **Dias de Atraso:** Identificado que clientes com mais de 20 dias de atraso no pagamento encerravam o contrato.
-5. **Resultado Final:** Após os tratamentos e filtros baseados nas dores do cliente, a taxa de cancelamento foi reduzida drasticamente para níveis aceitáveis e realistas para a operação da empresa.
+## Principais achados da base analisada
 
----
+- A amostra apresentava taxa elevada de cancelamento.
+- Contratos mensais apareceram associados a maior incidência de churn.
+- Clientes com maior volume de contatos ao suporte concentraram mais cancelamentos.
+- Atrasos prolongados também apareceram como fator relevante.
 
-## 📂 Estrutura dos Arquivos
-* `analise_cancelamentos.ipynb`: Notebook contendo todo o passo a passo do código executável.
-* `cancelamentos.csv`: Base de dados utilizada para a análise *(Nota: certifique-se de adicionar o arquivo `.csv` no diretório do seu projeto para rodar o código)*.
+> Os resultados representam relações observadas nesta base de estudo e não devem ser tratados como causalidade comprovada sem validação estatística adicional.
 
----
+## Valor demonstrado
 
-## 🛠️ Como Executar o Projeto
+Este projeto evidencia capacidade de:
 
-1. Faça o download ou clone este repositório.
-2. Abra o arquivo `.ipynb` no **Google Colab** ou no **VS Code** (com suporte ao Jupyter).
-3. Certifique-se de fazer o upload do arquivo `cancelamentos.csv` para o ambiente de execução.
-4. Execute as células sequencialmente.
+- Limpar e estruturar dados
+- Identificar padrões de comportamento
+- Traduzir números em hipóteses de negócio
+- Relacionar dados a retenção de clientes
+- Apresentar descobertas de forma objetiva
 
----
-*Projeto replicado para fins de estudo e portfólio em Ciência de Dados.*
+## Tecnologias
+
+**Python** • **Pandas** • **Plotly Express** • **Jupyter Notebook**
+
+## Arquivos
+
+- `analise_cancelamentos.ipynb` — análise exploratória
+- `cancelamentos.csv` — base utilizada no estudo
+
+## Como executar
+
+1. Clone o repositório.
+2. Abra o notebook no VS Code, Jupyter ou Google Colab.
+3. Garanta que o arquivo CSV esteja disponível no ambiente.
+4. Execute as células em sequência.
+
+## Contexto profissional
+
+Escolhi este tipo de problema porque ele conecta tecnologia com temas que fazem parte da minha trajetória profissional: **clientes, relacionamento, indicadores, experiência do cliente e tomada de decisão**.
+
+## Autor
+
+**Daniel Fernando Martins**
