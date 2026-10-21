@@ -1,108 +1,67 @@
-# 📊 Análise de Cancelamento de Clientes com Python
+# Análise exploratória de cancelamento de clientes
 
-> Projeto de análise exploratória voltado a **comportamento de clientes, churn, experiência do cliente e tomada de decisão**.
+**Python · Pandas · Plotly Express · Jupyter Notebook**
 
-## Problema de negócio
+Estudo de portfólio sobre padrões associados ao cancelamento. A pergunta é: quais segmentos merecem investigação para apoiar hipóteses de retenção?
 
-Cancelamento de clientes raramente deve ser analisado apenas como um número. A questão mais útil é identificar **quais padrões aparecem com maior frequência entre clientes que cancelam** e como esses sinais podem apoiar ações de retenção.
+[Notebook](analise_cancelamentos.ipynb) · [Abrir no Colab](https://colab.research.google.com/github/danielfernandomartins/analise-dados-clientes/blob/main/analise_cancelamentos.ipynb)
 
-## Objetivo
+## Resultados registrados
 
-Investigar uma base fictícia de clientes e transformar dados brutos em hipóteses úteis para áreas de:
+Os valores abaixo foram conferidos nas saídas salvas da versão anterior do notebook. Não são uma nova execução nem resultados de uma empresa.
 
-- relacionamento;
-- retenção;
-- atendimento;
-- experiência do cliente;
-- operações;
-- negócios.
+| População analisada | Clientes | Cancelamentos | Taxa |
+|---|---:|---:|---:|
+| Base após remoção de nulos | 49.996 | 28.393 | 56,79% |
+| Recorte sem contratos mensais | 40.112 | 18.509 | 46,14% |
+| Recorte anterior, menos de 5 ligações e até 20 dias de atraso | 26.267 | 4.821 | 18,35% |
 
-## Perguntas analisadas
+A leitura inicial registrava 50.000 linhas; quatro foram excluídas por valores ausentes.
 
-- Qual é a incidência de cancelamento na base?
-- O tipo de contrato parece relacionado ao churn?
-- Clientes que procuram mais o atendimento cancelam mais?
-- Atrasos de pagamento aparecem associados ao cancelamento?
-- Quais segmentos deveriam receber investigação adicional?
+**Interpretação:** filtrar clientes altera a população e o denominador. A diferença entre 56,79% e 18,35% não comprova redução de churn e não representa impacto de uma ação de retenção.
 
-## Etapas da análise
+Os 9.884 contratos mensais apresentavam cancelamento na execução histórica. Esse padrão exige investigar origem, construção e representatividade da base antes de extrapolar conclusões.
 
-1. leitura e inspeção da base;
-2. verificação de qualidade e consistência;
-3. tratamento e organização dos dados;
-4. análise de distribuição e cancelamento;
-5. comparação de comportamento por variáveis relevantes;
-6. visualização dos padrões;
-7. tradução dos achados em hipóteses de negócio.
+## Método
 
-## Principais achados da base estudada
+1. Ler o CSV e verificar colunas obrigatórias e valores do indicador de cancelamento.
+2. Inspecionar nulos e registrar quantas linhas são removidas.
+3. Calcular a proporção de cancelamentos na base limpa.
+4. Comparar contratos e assinaturas com a base completa preservada.
+5. Explorar distribuições e comparar recortes explicitamente identificados.
 
-- A amostra apresenta taxa elevada de cancelamento.
-- Contratos mensais aparecem associados a maior incidência de churn.
-- Clientes com maior volume de contatos com atendimento concentram mais cancelamentos.
-- Atrasos prolongados de pagamento também aparecem como variável relevante.
+O notebook mantém a base completa e cria variáveis separadas para os recortes. Contagens em histogramas precisam ser interpretadas junto ao tamanho dos segmentos.
 
-> Estes resultados representam associações observadas nesta base de estudo. Eles não comprovam causalidade e precisam de validação estatística e contexto adicional antes de qualquer decisão real de negócio.
+**Indicador:** cancelamentos / clientes da população analisada × 100. A coluna `cancelou` usa 1 para cancelamento e 0 para não cancelamento. A janela temporal e a definição operacional original não estão documentadas.
 
-## Hipóteses e ações que poderiam ser investigadas
+## Reprodução e dados
 
-### Contratos mensais
-Avaliar se existe diferença de proposta de valor, preço, onboarding ou fidelização em relação a contratos de maior duração.
+**Pendência atual:** `cancelamentos.csv` não está incluído no repositório. A origem e a licença ainda precisam ser documentadas. Não é possível reproduzir integralmente os resultados históricos apenas com os arquivos publicados.
 
-### Contatos recorrentes com atendimento
-Investigar os motivos de contato, resolução no primeiro atendimento e reincidência de problemas. Uma frequência elevada pode indicar fricção na jornada.
+Com acesso autorizado ao CSV original:
 
-### Atrasos em pagamentos
-Separar risco financeiro de insatisfação com o serviço. Nem todo atraso significa propensão a churn pelo mesmo motivo.
+1. Clone o repositório e entre na pasta.
+2. Instale as dependências: `python -m pip install -r requirements.txt`.
+3. Coloque `cancelamentos.csv` na pasta do notebook.
+4. Abra com `jupyter notebook` e execute as células em sequência.
 
-## O que este projeto demonstra
-
-- limpeza e organização de dados;
-- uso de Python e Pandas;
-- análise exploratória;
-- visualização de dados;
-- identificação de padrões;
-- formulação de hipóteses;
-- conexão entre dados e decisão de negócio;
-- comunicação de limitações da análise.
-
-## Tecnologias
-
-**Python** · **Pandas** · **Plotly Express** · **Jupyter Notebook**
-
-## Arquivos
-
-- `analise_cancelamentos.ipynb` — notebook com a análise exploratória;
-- `cancelamentos.csv` — base utilizada no estudo.
-
-## Como executar
-
-1. clone o repositório;
-2. abra o notebook no VS Code, Jupyter ou Google Colab;
-3. garanta que o CSV esteja disponível no mesmo ambiente;
-4. execute as células em sequência.
+No Colab, envie o CSV para a sessão antes de executar. O notebook informa claramente a ausência do arquivo. Usar outra base não reproduz os números acima.
 
 ## Limitações
 
-Este é um projeto de análise exploratória e não um modelo preditivo. A base é de estudo e os resultados não devem ser extrapolados para uma operação real sem validação adicional.
+- Análise exploratória; não há modelo preditivo ou inferência causal.
+- Resultados históricos não foram recalculados nesta revisão, pois o CSV está ausente.
+- Remover nulos pode introduzir viés; é necessário avaliar o mecanismo de ausência.
+- Limites de ligações e atraso foram escolhidos na exploração e precisam de validação independente.
+- Não há demonstração de economia, aumento de receita ou redução real de cancelamentos.
+- Origem e licença da base, definição temporal e reprodução integral permanecem pendentes.
 
-## Próximas evoluções
+## Próximas entregas
 
-- segmentação mais detalhada de clientes;
-- análise de correlação entre variáveis;
-- criação de KPIs de retenção;
-- dashboard em Power BI;
-- versão SQL da análise;
-- modelo simples de classificação de churn apenas após criação de baseline e validação adequada.
-
-## Como explicar em entrevista
-
-> "Meu foco não foi apenas calcular churn, mas transformar os padrões observados em perguntas de negócio. Procurei separar correlação de causalidade e mostrar quais análises adicionais seriam necessárias antes de recomendar uma ação."
-
-## Contexto profissional
-
-Escolhi este problema porque conecta tecnologia e dados a temas que fazem parte da minha trajetória: **clientes, relacionamento, indicadores, experiência do cliente e tomada de decisão**.
+- Documentar e disponibilizar a base quando houver permissão.
+- Consolidar taxas por segmento com denominadores e análise de qualidade.
+- Elaborar uma versão SQL e um dashboard em Power BI.
 
 ## Autor
 
-**Daniel Fernando Martins**
+Daniel Fernando Martins · [LinkedIn](https://www.linkedin.com/in/danielfernandomartins)
